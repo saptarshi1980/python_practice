@@ -1,3 +1,6 @@
 # Jupyter Notebook interface and Python notebook kernel
 notebook
 ipykernel
+
+# MySQL Connector/Python
+mysql-connector-python

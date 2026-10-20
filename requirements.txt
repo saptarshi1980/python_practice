@@ -1,0 +1,3 @@
+# Jupyter Notebook interface and Python notebook kernel
+notebook
+ipykernel

@@ -1,0 +1,5 @@
+# Python virtual environment
+.venv/
+
+# Local notebook recovery copies
+.notebook_backups/

@@ -4,3 +4,25 @@ ipykernel
 
 # MySQL Connector/Python
 mysql-connector-python
+
+# Lessons 22-24: numerical data, tables, and classical machine learning
+numpy>=1.26,<3
+pandas>=2.2,<4
+scikit-learn>=1.4,<2
+
+# Lesson 23A: static, statistical, and interactive visualization
+matplotlib>=3.8,<4
+seaborn>=0.13,<1
+plotly>=5.24,<7
+
+# Lesson 25: deep learning (CPU is sufficient)
+torch>=2.6,<3
+
+# Lesson 26 and optional Lesson 27 API integration: Pydantic v2 and FastAPI
+pydantic>=2.7,<3
+fastapi>=0.115,<1
+httpx>=0.27,<1
+# Optional live serving after extracting the app into a Python module
+uvicorn>=0.30,<1
+
+# Lesson 6A and Lesson 27 core examples use only the standard library.

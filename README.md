@@ -145,3 +145,118 @@ python your_file.py
 ```powershell
 deactivate
 ```
+
+## AI and data continuation (Lessons 22?27)
+
+Continue in this order after the existing course. Lessons 22?27 apply the Python foundations
+already covered; they do not replace or renumber Lessons 1?21. Each notebook defines its own
+inputs and can run from a fresh kernel. Lesson 21's live MySQL lab is not required for the new
+lessons. All new examples use small fictional data and need no internet access at runtime.
+
+22. [NumPy arrays](22_numpy_arrays.ipynb) ? shapes, dtypes, masks, broadcasting, and energy summaries.
+23. [pandas data analysis](23_pandas_data_analysis.ipynb) ? cleaning, missingness, grouping, and validated joins.
+24. [Classical ML](24_scikit_learn_classical_ml.ipynb) ? regression, classification, baselines, leakage, and Pipelines.
+25. [PyTorch foundations](25_pytorch_deep_learning.ipynb) ? tensors, autograd, batches, training, evaluation, and weight persistence.
+26. [Pydantic and FastAPI](26_pydantic_and_fastapi.ipynb) ? runtime validation, inference boundaries, dependency injection, endpoint tests, and async.
+27. [GenAI applications](27_genai_applications.ipynb) ? chunking, lexical vectors, retrieval, a configurable mock client, validated JSON, RAG, and evaluation.
+
+### Course dependencies: one requirements file
+
+All course dependencies are listed in `requirements.txt`, grouped by purpose in comments.
+The original Jupyter and MySQL dependencies are retained. No stage-specific requirements files
+are needed. From the project terminal, with your chosen environment activated:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+This installs Jupyter, the MySQL driver, NumPy, pandas, scikit-learn, PyTorch, Pydantic v2,
+FastAPI, HTTPX, and Uvicorn. This is an installation command for you to run; no packages were
+installed or virtual-environment settings changed while creating the lessons.
+
+Lessons 1-20, the new 6A bridge, and Lesson 27's core examples use only the standard library
+beyond Jupyter. Lesson 21's live lab additionally requires a local MySQL server, installed separately.
+The new data/AI lessons use the packages grouped in the shared requirements file.
+PyTorch is the largest dependency; a GPU and torchvision are not required. Version ranges
+specify API compatibility families, not a fully executed lockfile. Keep a snapshot once your
+environment is working.
+
+Use the existing Jupyter launch instructions above (`python -m notebook`), open the desired file,
+and run top to bottom with Shift+Enter. Check `import sys; print(sys.executable)` in a scratch cell
+if a package appears installed but cannot be imported. Restart the kernel after changing packages.
+Do not name local files numpy.py, pandas.py, torch.py, or fastapi.py.
+
+### Practice before opening solutions
+
+Predict each example's output, run it, change one value, and explain the difference. Complete the
+five scaffolded exercises and chapter project in each lesson before opening the matching notebook
+in [instructor_solutions](instructor_solutions/). The answer keys explain reasoning and include
+assertions; they also define their own worked-example setup and run independently. Check values
+in learner notebooks help diagnose your work without giving complete implementations.
+
+For pair study, take turns explaining a transformation and reviewing the other's edge-case checks.
+Restart and Run All before sharing your completed notebook. Save your own work deliberately;
+model and data examples use temporary folders and do not leave large generated artifacts.
+
+### Validation and scope
+
+[Coverage notes](course_coverage_notes.md) record how the new sequence builds on the existing lessons.
+[Validation notes](course_validation.md) distinguish executed cells from static checks.
+Run `.\.venv\Scripts\python.exe validate_ai_course.py --execute` to validate the new notebooks,
+compile every code cell (including notebook top-level await), verify the original-file hashes,
+and execute dependency-ready lessons and solutions in fresh kernels. Missing packages are reported,
+never installed. The validator uses the calling interpreter and writes no executed notebooks.
+The original-file hashes are a creation-time preservation check; if you later edit earlier lessons
+intentionally, expect that check to flag the change.
+
+Lesson 26 tests run in-process without launching a web server. Its formula service has exact test
+values and can later be replaced by a trained model; it is identified as a formula, not learned ML.
+Lesson 27's mock client and word-count vectors run without secrets or model downloads. They teach
+application structure and failure handling, not real LLM quality or semantic retrieval. External
+provider integration is optional and requires your own provider choice and runtime configuration.
+
+
+## Lesson 6A: searching, transformations, and reusable records
+
+After [Lesson 6](06_dictionaries_and_sets.ipynb), open
+[06_A_modern_function.ipynb](06_A_modern_function.ipynb). This self-contained standard-library
+bridge covers searching lists/dictionaries/sets, converting representations, zip, enumerate,
+unpacking, comprehensions, lambda, functions, OOP, dataclasses, type hints, iterators, and generators.
+It introduces the vocabulary needed to try the examples now and links to the existing later
+chapters for deeper practice. Continue to Lesson 7 afterward, or revisit 6A as a review after Lesson 16.
+The existing Lesson 6 filename and contents are unchanged.
+
+Complete its ten exercises and employee-directory capstone before opening
+[instructor solutions](instructor_solutions/06_A_modern_function_solutions.ipynb).
+Both new notebooks run independently and require no additional packages.
+
+
+## Lesson 23A: visualization before machine learning
+
+Recommended order: [23 pandas](23_pandas_data_analysis.ipynb) ?
+[23_A_data_visualization.ipynb](23_A_data_visualization.ipynb) ?
+[24 classical ML](24_scikit_learn_classical_ml.ipynb). Existing chapter numbers stay unchanged.
+
+The visualization chapter teaches **Matplotlib**, **Seaborn**, and **Plotly**: choosing chart types,
+counts and distributions, labelled scatter plots, subplots, correlation heatmaps, interactive hover,
+zoom and facets, accessible encodings, and local PNG/SVG/HTML export. It includes six scaffolded
+exercises, expected checks, interpretation questions, and a visual-report capstone. Attempt these
+before opening [the instructor answer key](instructor_solutions/23_A_data_visualization_solutions.ipynb).
+
+Data comes from scikit-learn's bundled [Iris dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html):
+150 flower measurements and three species, loaded locally with `load_iris(as_frame=True)`.
+No Kaggle account, dataset URL request, network download, model training, or confidential data is
+needed. This public dataset is an explicit exception to the fictional-data examples elsewhere.
+
+The three visualization packages are now included in the single `requirements.txt`, alongside
+NumPy, pandas, and scikit-learn. Use the same install command as the rest of the course:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+No packages were installed during chapter creation. Plotly's compact `plotly_mimetype` output
+requires a compatible notebook frontend. If it appears blank, follow the chapter's renderer
+troubleshooting or export self-contained HTML with embedded JavaScript for offline viewing.
+Static Plotly image export is optional and is not required; Matplotlib provides PNG/SVG.
+All export examples use temporary folders; choose a deliberate output path to keep an artifact.
